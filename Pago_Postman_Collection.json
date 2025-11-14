@@ -1,0 +1,221 @@
+{
+  "info": {
+    "name": "Pago Microservice API",
+    "description": "Colección de endpoints para probar el microservicio de Pagos y Órdenes con videojuegos",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "GET - Obtener todas las órdenes",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/orders",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["orders"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST - Crear nueva orden",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerName\": \"Juan Pérez\",\n  \"total\": 119.97,\n  \"items\": [\n    {\n      \"productName\": \"Baldur's Gate 3\",\n      \"quantity\": 2,\n      \"price\": 59.99\n    }\n  ],\n  \"payment\": {\n    \"method\": \"Credit Card\",\n    \"paid\": false\n  }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/orders",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["orders"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST - Crear orden con múltiples videojuegos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerName\": \"María García\",\n  \"total\": 179.96,\n  \"items\": [\n    {\n      \"productName\": \"Elden Ring\",\n      \"quantity\": 1,\n      \"price\": 59.99\n    },\n    {\n      \"productName\": \"The Legend of Zelda: Breath of the Wild\",\n      \"quantity\": 1,\n      \"price\": 59.99\n    },\n    {\n      \"productName\": \"Cyberpunk 2077\",\n      \"quantity\": 1,\n      \"price\": 59.99\n    }\n  ],\n  \"payment\": {\n    \"method\": \"PayPal\",\n    \"paid\": false\n  }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/orders",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["orders"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Payments",
+      "item": [
+        {
+          "name": "GET - Obtener todos los pagos",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/payments",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["payments"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST - Procesar pago (Credit Card)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"Credit Card\",\n  \"paid\": false\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/payments",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["payments"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST - Procesar pago (PayPal)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"PayPal\",\n  \"paid\": false\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/payments",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["payments"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST - Procesar pago (Transferencia)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"Transfer\",\n  \"paid\": false\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/payments",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["payments"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Database & Documentation",
+      "item": [
+        {
+          "name": "H2 Console (si usas BD en memoria)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/h2-console",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["h2-console"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Swagger UI - Documentación API",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/swagger-ui.html",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["swagger-ui.html"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
